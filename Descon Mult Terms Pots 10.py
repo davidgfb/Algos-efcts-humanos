@@ -18,13 +18,14 @@ def a_Suma(tupla):
     return f"({' + '.join(map(str, tupla))})"
 
 #PROGRAMA
-_1ªdescon,_2ªdescon = map(descompon, (1234, 5678))
+term, term_1 = tuple(int(input(f'Introduzca {pos} term: ')) for pos in ('1er', '2º'))
+_1ªdescon,_2ªdescon = map(descompon, (term, term_1))
 cadena = ' + '.join(f'{elem} * {elem_1}' for elem in _1ªdescon for elem_1 in _2ªdescon)
 res = sum(elem * elem_1 for elem in _1ªdescon for elem_1 in _2ªdescon)
-tupla = ('1234 * 5678',
+tupla = (f'{term} * {term_1}',
       f"{' * '.join(map(a_Suma, (_1ªdescon, _2ªdescon)))}",
       f"{' + '.join(f'{elem} * {a_Suma(_2ªdescon)}' for elem in _1ªdescon)}",
       f'{cadena} = {res}',
-      f'True debe ser {res == 1234 * 5678}')
+      f'True debe ser {res == term * term_1}')
 
 print(' = '.join(tupla[:-1]),'\n',tupla[-1])
